@@ -1,5 +1,6 @@
 import React from 'react';
 import Letter from '../letter';
+import Results from '../results';
 
 class Game extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class Game extends React.Component {
       runningTime: 0,
       startTime: null,
       intervalId: null,
-      letterSplits: {}
+      letterSplits: {},
+      won: false
     }
 
     this.handleInput = this.handleInput.bind(this);
@@ -21,7 +23,8 @@ class Game extends React.Component {
   handleStart() {
     this.setState({
       gameStarted: true,
-      startTime: Date.now()
+      startTime: Date.now(),
+      won: false
     })
     this.timer()
   };
@@ -50,7 +53,8 @@ class Game extends React.Component {
       gameStarted: false,
       runningTime: 0,
       startTime: null,
-      intervalId: null
+      intervalId: null,
+      won: false
     });
 
     this.resetTimer();
@@ -58,6 +62,7 @@ class Game extends React.Component {
 
   handleWin() {
     this.resetTimer();
+    this.setState({won: true});
   }
 
   nextLetter() {
@@ -67,7 +72,9 @@ class Game extends React.Component {
 
   handleSplit(letter) {
     this.setState({
-      letterSplits: Object.assign({}, this.state.letterSplits, {[letter]: this.state.runningTime})
+      letterSplits: Object.assign({}, this.state.letterSplits, {
+        [letter]: (this.state.runningTime / 1000).toFixed(3)
+      })
     })
   }
 
@@ -104,6 +111,13 @@ class Game extends React.Component {
           />
         </form>
         <p className="time-elapsed">Time: { (this.state.runningTime / 1000).toFixed(3) }s</p>
+        {
+          this.state.won &&
+            <Results
+              runningTime = {this.state.runningTime}
+              letterSplits = {this.state.letterSplits}
+            />
+        }
       </section>
     )
   }

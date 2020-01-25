@@ -35,14 +35,13 @@ class Form extends React.Component {
 
   nextLetter() {
     const letterIdx = this.state.input.length;
-    const letter = this.state.letters[letterIdx];
-    return letter ? letter : null
+    return this.state.letters[letterIdx];
   };
 
   render() {
     return(
-      <section>{
-        this.nextLetter() ?
+      <section>
+        { this.nextLetter() ?
           <Letter currentLetter={this.nextLetter()} /> :
           <p>Alphabet complete!</p>
         }

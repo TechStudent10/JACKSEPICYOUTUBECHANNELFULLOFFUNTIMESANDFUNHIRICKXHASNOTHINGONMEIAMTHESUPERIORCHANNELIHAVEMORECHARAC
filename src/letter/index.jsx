@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Letter = ({currentLetter}) => (
-  <p>{currentLetter}</p>
+  <p className="next-letter">{currentLetter}</p>
 );
 
 export default Letter;

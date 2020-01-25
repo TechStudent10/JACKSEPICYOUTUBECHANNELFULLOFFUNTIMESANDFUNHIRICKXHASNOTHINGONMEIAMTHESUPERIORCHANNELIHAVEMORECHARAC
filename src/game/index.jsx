@@ -10,7 +10,8 @@ class Game extends React.Component {
       gameStarted: false,
       runningTime: 0,
       startTime: null,
-      intervalId: null
+      intervalId: null,
+      letterSplits: {}
     }
 
     this.handleInput = this.handleInput.bind(this);
@@ -29,10 +30,12 @@ class Game extends React.Component {
     if (!this.state.gameStarted) this.handleStart()
 
     const letterIdx = this.state.input.length;
+    const letter = e.target.value[e.target.value.length - 1];
     if (e.target.value === this.state.letters.slice(0, letterIdx + 1)) {
       this.setState({
         input: e.target.value
       })
+      this.handleSplit(letter);
     }
 
     if (e.target.value === this.state.letters) {
@@ -62,6 +65,12 @@ class Game extends React.Component {
     return this.state.letters[letterIdx];
   };
 
+  handleSplit(letter) {
+    this.setState({
+      letterSplits: Object.assign({}, this.state.letterSplits, {[letter]: this.state.runningTime})
+    })
+  }
+
   timer() {
     this.setState({
       intervalId: setInterval(() => {
@@ -78,12 +87,12 @@ class Game extends React.Component {
 
   render() {
     return(
-      <section>
+      <section className="game">
         { this.nextLetter() ?
           <Letter currentLetter={this.nextLetter()} /> :
-          <p>Alphabet complete!</p>
+          <p className="winning-message">Alphabet complete!</p>
         }
-        <form onSubmit={this.handleReset}>
+        <form className="game-form" onSubmit={this.handleReset}>
           <input
             type="text"
             value={this.state.input}
@@ -94,7 +103,7 @@ class Game extends React.Component {
             value="Reset"
           />
         </form>
-        <p>Time: { this.state.runningTime / 1000 }</p>
+        <p className="time-elapsed">Time: { (this.state.runningTime / 1000).toFixed(3) }s</p>
       </section>
     )
   }

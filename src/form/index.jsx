@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Letter from '../letter';
+
 class Form extends React.Component {
   constructor(props) {
     super(props);
@@ -20,16 +22,30 @@ class Form extends React.Component {
         input: e.target.value
       })
     }
+
+    if (e.target.value === this.state.letters) {
+      console.log('you win!');
+    }
   };
 
   handleSubmit(e) {
     e.preventDefault();
     this.setState({input: ''});
-  }
+  };
+
+  nextLetter() {
+    const letterIdx = this.state.input.length;
+    const letter = this.state.letters[letterIdx];
+    return letter ? letter : null
+  };
 
   render() {
     return(
-      <section>
+      <section>{
+        this.nextLetter() ?
+          <Letter currentLetter={this.nextLetter()} /> :
+          <p>Alphabet complete!</p>
+        }
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"

@@ -34,14 +34,14 @@ class Game extends React.Component {
 
     const letterIdx = this.state.input.length;
     const letter = e.target.value[e.target.value.length - 1];
-    if (e.target.value === this.state.letters.slice(0, letterIdx + 1)) {
+    if (e.target.value.toLowerCase() === this.state.letters.slice(0, letterIdx + 1)) {
       this.setState({
-        input: e.target.value
+        input: e.target.value.toLowerCase()
       })
       this.handleSplit(letter);
     }
 
-    if (e.target.value === this.state.letters) {
+    if (e.target.value.toLowerCase() === this.state.letters) {
       this.handleWin();
     }
   };

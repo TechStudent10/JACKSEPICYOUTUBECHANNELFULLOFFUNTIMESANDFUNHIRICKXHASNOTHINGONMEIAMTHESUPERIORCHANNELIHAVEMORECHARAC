@@ -33,7 +33,7 @@ h2 {
 .game-form input {
   font-size: 20px;
   margin: 0 10px;
-  padding: 0 20px;
+  padding: 0;
   border: 0;
   height: 50px;
   box-sizing: border-box;

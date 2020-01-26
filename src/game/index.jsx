@@ -73,7 +73,7 @@ class Game extends React.Component {
   handleSplit(letter) {
     this.setState({
       letterSplits: Object.assign({}, this.state.letterSplits, {
-        [letter]: (this.state.runningTime / 1000).toFixed(3)
+        [letter.toLowerCase()]: (this.state.runningTime / 1000).toFixed(3)
       })
     })
   }
@@ -100,6 +100,7 @@ class Game extends React.Component {
         <h2>Typing game to see how fast you type. Timer starts when you do :)</h2>
         <section
           className="status"
+          key={this.state.input}
           onClick={() => document.getElementById('game-form-input').focus()}
         >
           { this.nextLetter() ?
@@ -107,7 +108,13 @@ class Game extends React.Component {
             <p className="winning-message">Success!</p>
           }
         </section>
-        <form className="game-form" onSubmit={this.handleReset} autoComplete="off">
+        <form
+          className="game-form"
+          onSubmit={this.handleReset}
+          autoComplete="off"
+          autoCapitalize="off"
+          autoCorrect="off"
+        >
           <input
             id="game-form-input"
             type="text"

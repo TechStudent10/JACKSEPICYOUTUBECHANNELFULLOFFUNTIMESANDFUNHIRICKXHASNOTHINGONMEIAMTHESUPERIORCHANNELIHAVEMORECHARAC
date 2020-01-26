@@ -90,20 +90,31 @@ class Game extends React.Component {
 
   resetTimer() {
     clearInterval(this.state.intervalId);
+    document.getElementById('game-form-input').focus();
   }
 
   render() {
     return(
       <section className="game">
-        { this.nextLetter() ?
-          <Letter currentLetter={this.nextLetter()} /> :
-          <p className="winning-message">Alphabet complete!</p>
-        }
-        <form className="game-form" onSubmit={this.handleReset}>
+        <h1>Type The Alphabet</h1>
+        <h2>Typing game to see how fast you type. Timer starts when you do :)</h2>
+        <section
+          className="status"
+          onClick={() => document.getElementById('game-form-input').focus()}
+        >
+          { this.nextLetter() ?
+            <Letter currentLetter={this.nextLetter()} /> :
+            <p className="winning-message">Success!</p>
+          }
+        </section>
+        <form className="game-form" onSubmit={this.handleReset} autoComplete="off">
           <input
+            id="game-form-input"
             type="text"
             value={this.state.input}
             onChange={this.handleInput}
+            placeholder='Type here. Pro tip: Press enter to restart'
+            autoFocus
           />
           <input
             type="submit"

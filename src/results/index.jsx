@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Results = ({runningTime, letterSplits}) => {
-  const splits = Object.keys(letterSplits).map(char => <li key={char}>{char}: {letterSplits[char]}s</li>)
+  const splits = Object.keys(letterSplits).map(char => <li key={char}><span className="char">{char}:</span> {letterSplits[char]}s</li>)
   return (
     <div className="results">
-      <p>Results:</p>
+      <p>Detailed Results 🏁</p>
       <ul>
         { splits }
       </ul>

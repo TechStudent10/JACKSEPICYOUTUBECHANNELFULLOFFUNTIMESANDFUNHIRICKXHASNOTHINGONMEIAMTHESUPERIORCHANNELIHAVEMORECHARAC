@@ -1,20 +1,99 @@
 body {
+  background-color: #011627;
+  color: #FDFFFC;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .game {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 25px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Bangers', sans-serif;
+  font-size: 3em;
+  color: #2EC4B6;
+  margin: 0;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.game-form {
+  display: flex;
+  justify-content: center;
+}
+
+.game-form input {
+  font-size: 20px;
+  margin: 0 10px;
+  padding: 0 20px;
+  border: 0;
+  height: 50px;
+  box-sizing: border-box;
+}
+
+.game-form input[type=text] {
+  width: 50%;
+  border: 3px solid #2EC4B6;
+}
+
+.game-form input[type=submit] {
+  width: 20%;
+  background-color: #E71D46;
+  color: #fdfffc;
+  font-weight: bold;
+}
+
+.time-elapsed {
+  font-size: 30px;
+  padding: 25px 0;
+}
+
+.results {
+  background-color: #FDFFFC;
+  border-radius: 10px;
   width: 50%;
   margin: 0 auto;
-  text-align: center;
+  padding: 25px;
+  color: #011627;
+  font-size: 18px;
+}
+
+.results p {
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .results ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.results li {
+  margin-bottom: 5px;
+}
+
+.results .char {
+  color: #000;
+  font-weight: bold;
+}
+
+.status{
+  background-color: #fdfffc;
+  padding: 10px;
+  margin: 30px 40px;
+  border-radius: 10px;
+  color: #E71D36;
+  font-family: 'Lilita One', sans-serif;
+  font-size: 60px;
+  line-height: 0;
 }

@@ -120,6 +120,7 @@ class Game extends React.Component {
             type="text"
             value={this.state.input}
             onChange={this.handleInput}
+            onPaste={this.handleReset}
             placeholder='Type here. Pro tip: Press enter to restart'
             autoFocus
           />

@@ -137,6 +137,9 @@ class Game extends React.Component {
               letterSplits = {this.state.letterSplits}
             />
         }
+        <p className="matt">
+          created by <a href="https://twitter.com/mttrms" target="_blank" rel="noopener noreferrer">@mttrms</a> – my best time: 1.39s!
+        </p>
       </section>
     )
   }

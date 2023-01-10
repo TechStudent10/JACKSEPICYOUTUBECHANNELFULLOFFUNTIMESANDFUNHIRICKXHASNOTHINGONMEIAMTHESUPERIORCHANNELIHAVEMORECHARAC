@@ -1,3 +1,5 @@
+# THIS PROJECT HAS BEEN ARCHIVED DUE TO THE AMOUNT OF SECURITY RISKS ASSOCIATED. **RUN AT YOUR OWN RISK**
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
